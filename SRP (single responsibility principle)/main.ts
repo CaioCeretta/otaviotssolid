@@ -1,10 +1,10 @@
 //Na clean architecture a camada main é o local onde importamos as dependencias, injetamos as independencias, iniciamos o programa
 
-import { Messaging } from './Messaging';
-import { Order } from './Order';
-import { Persistency } from './Persistency';
-import { Product } from './Product';
-import { ShoppingCart } from './ShoppingCart';
+import { Messaging } from './services/Messaging';
+import { Order } from './classes/Order';
+import { Persistency } from './services/Persistency';
+import { Product } from './classes/Product';
+import { ShoppingCart } from './classes/ShoppingCart';
 
 const cart = new ShoppingCart();
 const persistency = new Persistency();

@@ -14,13 +14,15 @@
  * Validação: deveria ser uma responsabilidade à parte.
  */
 
+import { Discount } from './Discount';
 import { CartItem } from './interfaces/CartItem';
-import { OrderStatus } from './interfaces/OrderStatus';
 
 //Tudo que puder ser separado em módulos, será separado em modulos.
 
 export class ShoppingCart {
   private readonly _items: CartItem[] = [];
+
+  constructor(private readonly discount: Discount) {}
 
   addItem(item: CartItem): void {
     this._items.push(item);
@@ -36,6 +38,10 @@ export class ShoppingCart {
 
   get total(): number {
     return +this._items.reduce((acc, val) => acc + val.price, 0).toFixed(2);
+  }
+
+  totalWithDiscount(): number {
+    return this.discount.calculate(this.total);
   }
 
   isEmpty(): boolean {
