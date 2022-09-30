@@ -1,7 +1,3 @@
-/** COMENTÁRIOS
- * Estamos repetindo o código, ferindo o DRY ('Don't repeat yourself')
- */
-
 export abstract class Discount {
   protected discount = 0;
 
