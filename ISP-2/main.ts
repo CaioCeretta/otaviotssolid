@@ -10,20 +10,33 @@ import { Persistency } from './services/Persistency';
 import { Product } from './classes/Product';
 import { ShoppingCart } from './classes/ShoppingCart';
 import {
-  Discount,
-  FiftyPercentDiscount,
+  // Discount,
+  // FiftyPercentDiscount,
   TenPercentDiscount,
-  NoDiscount,
+  // NoDiscount,
 } from './classes/Discount';
+import { EnterpriseCustomer, IndividualCustomer } from './classes/Customer';
 
-const fiftyPercentDiscount = new FiftyPercentDiscount();
+const individualCustomer = new IndividualCustomer(
+  'Caio',
+  'Ceretta',
+  '11111111',
+);
+
+const enterpriseCustomer = new EnterpriseCustomer(
+  'MBTex',
+  'Batista',
+  '11111111/11',
+);
+
+// const fiftyPercentDiscount = new FiftyPercentDiscount();
 const tenPercentDiscount = new TenPercentDiscount();
-const noDiscount = new NoDiscount();
+// const noDiscount = new NoDiscount();
 
 const cart = new ShoppingCart(tenPercentDiscount);
 const persistency = new Persistency();
 const messaging = new Messaging();
-const order = new Order(cart, messaging, persistency);
+const order = new Order(cart, messaging, persistency, enterpriseCustomer);
 
 cart.addItem(new Product('Shirt', 49.9));
 cart.addItem(new Product('Pen', 5.9));
