@@ -1,4 +1,3 @@
-import { Discount } from '../Discount';
 import { CartItem } from './CartItem';
 
 export interface ShoppingCartProtocol {
