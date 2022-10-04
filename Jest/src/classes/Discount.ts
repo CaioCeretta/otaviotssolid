@@ -21,7 +21,8 @@ export class TenPercentDiscount extends Discount {
 export class NoDiscount extends Discount {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   calculate(price: number): number {
-    return 10000000000000000000;
+    // return 10000000000000000000;
     //Isso também seria uma mudança sutil que resultaria na quebra do princípio LSP
+    return price;
   }
 }
