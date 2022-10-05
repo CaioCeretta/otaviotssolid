@@ -71,5 +71,28 @@ describe('ShoppingCart', () => {
     expect(sut.items.length).toBe(1);
     sut.removeItem(0);
     expect(sut.isEmpty()).toBe(true);
+    it('should call Discount.calculate(price) when totalWithDiscount is called', () => {
+      const { sut, discountMock } = createSutWIthProducts();
+      const discountMockSpy = jest.spyOn(discountMock, 'calculate');
+      sut.totalWithDiscount();
+
+      expect(discountMockSpy).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  it('should call Discount.calculate once when totalWithDiscount is called', () => {
+    const { sut, discountMock } = createSutWIthProducts();
+    const discountMockSpy = jest.spyOn(discountMock, 'calculate');
+    sut.totalWithDiscount();
+
+    expect(discountMockSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should call Discount.calculate with totalPrice when totalWithDiscount is called', () => {
+    const { sut, discountMock } = createSutWIthProducts();
+    const discountMockSpy = jest.spyOn(discountMock, 'calculate');
+    sut.totalWithDiscount();
+
+    expect(discountMockSpy).toHaveBeenCalledWith(41);
   });
 });
