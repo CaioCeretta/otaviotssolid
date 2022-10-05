@@ -108,4 +108,12 @@ describe('Order', () => {
 
     expect(persistencyMockSpy).toHaveBeenCalledTimes(1);
   });
+
+  it('Should clear cart', () => {
+    const { sut, shoppingCartMock } = createSut();
+    const persistencyMockSpy = jest.spyOn(shoppingCartMock, 'clear');
+    sut.checkout();
+
+    expect(persistencyMockSpy).toHaveBeenCalledTimes(1);
+  });
 });
